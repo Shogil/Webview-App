@@ -9,12 +9,16 @@
     tools:context=".MainActivity">
 
     <ProgressBar
-        android:id="@+id/myProgresBar"
+        android:id="@+id/myProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
+
     <WebView
         android:id="@+id/myWebView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>
