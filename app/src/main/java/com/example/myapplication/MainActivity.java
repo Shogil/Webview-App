@@ -1,8 +1,10 @@
 package com.example.myapplication;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
@@ -77,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
             if (myWebView.canGoBack()) {
                 myWebView.goBack();
             } else {
-                finish();
+
+                showExitDialog();
             }
         } else if (item.getItemId() == R.id.menuforward) {
             if (myWebView.canGoForward()) {
@@ -98,10 +101,29 @@ public class MainActivity extends AppCompatActivity {
         if(myWebView.canGoBack()) {
             myWebView.goBack();
         }else {
-            finish();
+            showExitDialog();
         }
 
     }
 
+    private void showExitDialog(){
+        AlertDialog.Builder myExitDilog = new AlertDialog.Builder(MainActivity.this);
+        myExitDilog.setTitle("Exiting app?");
+        myExitDilog.setMessage("Do you want to exit the app?");
+        myExitDilog.setPositiveButton("Exit App", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
+        myExitDilog.setNegativeButton("stay in app", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        myExitDilog.create();
+        myExitDilog.show();
+    }
 
 }
